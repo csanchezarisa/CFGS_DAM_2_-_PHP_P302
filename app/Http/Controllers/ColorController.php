@@ -57,7 +57,7 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function edit(Color $color)
+    public function edit($id)
     {
         //
     }
@@ -69,9 +69,11 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Color $color)
+    public function update(Request $request, $id)
     {
-        //
+        $color = Color::find($id);
+        $color->update($request->all());
+        return \response()->json($color);
     }
 
     /**
@@ -80,8 +82,10 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Color $color)
+    public function destroy($id)
     {
-        //
+        $color = Color::find($id);
+        $color->delete();
+        return \response(null, 200, array());
     }
 }
