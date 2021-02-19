@@ -35,7 +35,8 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $color = Color::create($request->all());
+        return \response(null, 201, array());
     }
 
     /**
