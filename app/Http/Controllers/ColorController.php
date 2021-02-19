@@ -45,9 +45,10 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function show(Color $color)
+    public function show($id)
     {
-        //
+        $color = Color::find($id);
+        return \response()->json($color);
     }
 
     /**
